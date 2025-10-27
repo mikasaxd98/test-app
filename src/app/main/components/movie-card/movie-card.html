@@ -3,10 +3,7 @@
     <div class=" image-empty bg-[url(/assets/img/svg/empty.svg)] w-full h-full bg-no-repeat bg-center">
       <a [routerLink]="['movie', movie()?.id]" class="block rounded-t-xl overflow-hidden">
         @if (this.movie()?.poster_path){
-          <img [ngSrc]="updatedMediaUrl()" [width]="200" [height]="298"
-               [priority]="isPriority()"
-               [attr.loading]="isPriority() ? null : 'lazy'"
-               [attr.decoding]="isPriority() ? null : 'async'"
+          <img [src]="updatedMediaUrl()" [width]="200" [height]="298" loading="eager"
                alt="img">
         }
       </a>

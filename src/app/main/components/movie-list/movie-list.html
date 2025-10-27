@@ -4,8 +4,8 @@
           <app-loader/>
 } @else {
   <div class=" movie-list grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    @for (movie of filteredMovies(); track movie.id; let i = $index) {
-      <app-movie-card [movie]="movie"  [isPriority]="i === 0"/>
+    @for (movie of filteredMovies(); track movie.id;) {
+      <app-movie-card [movie]="movie"/>
     } @empty {
       <span class="text-white">There are no items.</span>
     }
