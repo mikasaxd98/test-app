@@ -1,0 +1,19 @@
+<div class="movie-card bg-white border border-white max-w-[220px] w-[200px] rounded-xl mt-3.5">
+  <div class="image w-full max-h-[298px] h-[298px]">
+    <div class=" image-empty bg-[url(/assets/img/svg/empty.svg)] w-full h-full bg-no-repeat bg-center">
+      <a [routerLink]="['movie', movie()?.id]" class="block rounded-t-xl overflow-hidden">
+        @if (this.movie()?.poster_path){
+          <img [ngSrc]="updatedMediaUrl()" [width]="200" [height]="298"
+               [priority]="isPriority()"
+               [attr.loading]="isPriority() ? null : 'lazy'"
+               [attr.decoding]="isPriority() ? null : 'async'"
+               alt="img">
+        }
+      </a>
+    </div>
+  </div>
+  <div class="content p-1.5 flex flex-col gap-1">
+    <a  [routerLink]="['movie', movie()?.id]" class="content__title text-black font-bold hover:text-gray-600 min-h-14">{{ movie()?.title }}</a>
+    <span class="content__date text-gray-500">{{movie()?.release_date}}</span>
+  </div>
+</div>

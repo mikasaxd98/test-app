@@ -1,0 +1,60 @@
+@if(movieService.currentHttpRequestState().isLoading){
+<app-loader/>
+} @else {
+  <div [style.--bg-url]="'url(' + updatedMediaUrlBigImg() + ')'"
+  class="w-full h-[520px] max-h-[520px] bg-white bg-[image:var(--bg-url)] bg-cover bg-center bg-no-repeat">
+<div class="custom h-[520px] max-h-[520px] w-full bg-linear-to-r bg-cover bg-center bg-no-repeat
+bg-[linear-gradient(to_right,rgba(31.5,31.5,52.5,1)_calc((50vw-170px)-340px),rgba(31.5,31.5,52.5,0.84)_50%,rgba(31.5,31.5,52.5,0.84)_100%)]">
+
+  <div class="flex h-full p-10 items-center gap-8 justify-center lg:justify-normal">
+    <div class="movie-card border flex-none border-transparent max-w-[220px] w-[200px] rounded-xl">
+      <div class="image w-full max-h-[298px] h-[298px]">
+        <div class=" image-empty bg-[url(/assets/img/svg/empty.svg)] w-full h-full bg-no-repeat bg-center">
+          <a  class="block rounded-xl overflow-hidden">
+            <img [ngSrc]="updatedMediaUrl()" [width]="200" [height]="298"  loading="lazy" decoding="async" alt="img">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="poster-details hidden lg:flex flex-col gap-7">
+        <div class="poster-details__header flex flex-col">
+          <h1 class="text-white bold text-5xl font-bold">{{movieDetails()?.title}}
+            <span class="text-3xl text-gray-400">{{movieDetails()?.release_date}}</span>
+          </h1>
+          <p class="genres text-white text-md">
+            <span>{{movieDetails()!.genres[0].name}}</span>,
+            <span>{{movieDetails()!.genres[1].name}}</span>,
+            <span>duration: {{movieDetails()?.runtime}} min</span>
+          </p>
+        </div>
+      <div class="poster-details__review">
+        <h2 class="review__title text-white text-lg font-bold">Review</h2>
+        <span class="description text-white leading-normal text-sm">{{movieDetails()?.overview}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="poster-details lg:hidden flex-col gap-7 bg-[#202035] p-6 flex">
+  <div class="poster-details__header flex flex-col">
+    <h1 class="text-white bold text-5xl font-bold">{{movieDetails()?.title}}
+      <span class="text-3xl text-gray-400">{{movieDetails()?.release_date}}</span>
+    </h1>
+    <p class="genres text-white text-md">
+      <span>{{movieDetails()!.genres[0].name}}</span>,
+      <span>{{movieDetails()!.genres[1].name}}</span>,
+      <span>duration: {{movieDetails()?.runtime}} min</span>
+    </p>
+  </div>
+  <div class="poster-details__review">
+    <h2 class="review__title text-white text-lg font-bold">Review</h2>
+    <span class="description text-white leading-normal text-sm">{{movieDetails()?.overview}}</span>
+  </div>
+</div>
+<div class="text-white text-md fixed top-2.5 left-2.5" [routerLink]="['/']">
+  Back
+</div>
+}
+
